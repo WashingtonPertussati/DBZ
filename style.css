@@ -1,0 +1,172 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navegar {
+    color: #fff;
+    background: linear-gradient(rgb(0, 17, 255),
+            rgb(252, 255, 75),
+            rgba(7, 32, 131, 0.863));
+}
+
+.nav-container {
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    align-items: center;
+    min-height: 64px;
+    gap: 12px;
+    padding: 8px 0;
+}
+
+.navegar img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
+h1 {
+    margin: 0;
+    text-align: center;
+    font-size: 2.5rem;
+    text-shadow: 0 1px 0 #000, 0 2px 6px rgba(0, 0, 0, .3);
+    letter-spacing: .5px
+}
+
+h5 {
+    margin: 0;
+    text-align: center;
+    font-size: 2.5rem;
+    text-shadow: 0 1px 0 #000, 0 2px 6px rgba(0, 0, 0, .3);
+    letter-spacing: .5px
+}
+
+form {
+    position: absolute;
+    gap: 10px;
+    right: 20px;
+    height: auto;
+}
+
+
+body {
+    background: linear-gradient(135deg, #f59e0b 0%, #f97316 33%, #8b5cf6 100%);
+    color: #111;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+}
+
+
+.card-personagem img {
+    height: 220px;
+    object-fit: cover;
+    background: #f7f7f7;
+}
+
+
+#vazio {
+    margin-top: 24px;
+}
+
+.card-personagem img {
+    object-fit: contain;
+    transition: transform 0.55s ease, box-shadow 0.15s ease;
+}
+
+
+.card-personagem:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 115, 8, 0.834);
+}
+
+
+/* Paginação numérica */
+#pager .pagination {
+    margin: 0;
+}
+
+#pager .page-item .page-link {
+    color: #050505;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#pager .page-item.active .page-link {
+    background-color: #fd0d0d;
+    border-color: #0d6efd;
+    color: #fff;
+}
+
+#pager .page-item.disabled .page-link {
+    color: #999;
+    cursor: not-allowed;
+}
+
+
+
+.modal-body .detalhe-personagem {
+  display: grid;
+  grid-template-columns: minmax(280px, 360px) 1fr; /* coluna da imagem */
+  gap: 20px;
+  align-items: start;
+}
+
+
+@media (max-width: 576px) {
+.detalhe-personagem img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+    background: #f7f7f7;
+}
+
+
+.detalhe-personagem dl {
+    margin: 0;
+}
+
+.detalhe-personagem dt {
+    font-weight: 600;
+    color: #333;
+}
+
+.detalhe-personagem dd {
+    margin: 0 0 .55rem 0;
+}
+
+
+.modal-body .detalhe-personagem {
+    display: grid;
+    grid-template-columns: minmax(280px, 360px) 1fr;
+    /* coluna da imagem fica maior */
+    gap: 20px;
+    align-items: start;
+}
+
+
+@media (max-width: 576px) {
+    .nav-container {
+        grid-template-columns: 64px 1fr;
+        grid-template-areas:
+            "logo titulo"
+            "form form";
+    }
+
+    .navegar img {
+        grid-area: logo;
+    }
+
+    .titulo {
+        grid-area: titulo;
+    }
+
+    .brr-buscar {
+        grid-area: form;
+    }
+}
+
+}
