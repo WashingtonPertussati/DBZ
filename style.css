@@ -1,172 +1,177 @@
+
+/* Reset básico */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+/* Corpo e fundo */
+body {
+  background: linear-gradient(135deg, #f59e0b 0%, #f97316 33%, #8b5cf6 100%);
+  color: #111;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  line-height: 1.4;
+}
+
+/* Navegação */
 .navegar {
-    color: #fff;
-    background: linear-gradient(rgb(0, 17, 255),
-            rgb(252, 255, 75),
-            rgba(7, 32, 131, 0.863));
+  color: #fff;
+  background: linear-gradient(rgb(0, 17, 255), rgb(252, 255, 75), rgba(7, 32, 131, 0.863));
 }
 
+/* Container do header: mobile primeiro (duas linhas) */
 .nav-container {
-    display: grid;
-    grid-template-columns: 80px 1fr auto;
-    align-items: center;
-    min-height: 64px;
-    gap: 12px;
-    padding: 8px 0;
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  grid-template-areas:
+    "logo titulo"
+    "form form";
+  align-items: center;
+  gap: 12px;
+  min-height: 64px;
+  padding: 8px 12px;
 }
 
 .navegar img {
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
+  grid-area: logo;
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
 }
 
-h1 {
-    margin: 0;
-    text-align: center;
-    font-size: 2.5rem;
-    text-shadow: 0 1px 0 #000, 0 2px 6px rgba(0, 0, 0, .3);
-    letter-spacing: .5px
+.titulo { grid-area: titulo; }
+.brr-buscar { grid-area: form; }
+
+/* Títulos */
+h1, h5 {
+  margin: 0;
+  text-align: center;
+  font-size: 2rem;           /* menor no mobile */
+  text-shadow: 0 1px 0 #000, 0 2px 6px rgba(0, 0, 0, .3);
+  letter-spacing: .5px;
 }
 
-h5 {
-    margin: 0;
-    text-align: center;
-    font-size: 2.5rem;
-    text-shadow: 0 1px 0 #000, 0 2px 6px rgba(0, 0, 0, .3);
-    letter-spacing: .5px
-}
-
+/* Formulário de busca: ocupar toda a linha no mobile */
 form {
-    position: absolute;
-    gap: 10px;
-    right: 20px;
-    height: auto;
+  position: relative;         /* evita posicionamento absoluto no mobile */
+  display: grid;
+  grid-template-columns: 1fr auto; /* input + botão */
+  gap: 8px;
+  width: 100%;
 }
 
-
-body {
-    background: linear-gradient(135deg, #f59e0b 0%, #f97316 33%, #8b5cf6 100%);
-    color: #111;
-}
-
+/* Cartões */
 .card {
-    background: rgba(255, 255, 255, 0.9);
-    border: none;
-}
-
-
-.card-personagem img {
-    height: 220px;
-    object-fit: cover;
-    background: #f7f7f7;
-}
-
-
-#vazio {
-    margin-top: 24px;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
 .card-personagem img {
-    object-fit: contain;
-    transition: transform 0.55s ease, box-shadow 0.15s ease;
+  width: 100%;
+  height: 220px;
+  object-fit: contain;
+  background: #f7f7f7;
+  transition: transform 0.55s ease, box-shadow 0.15s ease;
 }
-
 
 .card-personagem:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(255, 115, 8, 0.834);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 115, 8, 0.834);
 }
 
+#vazio { margin-top: 24px; }
 
-/* Paginação numérica */
-#pager .pagination {
-    margin: 0;
-}
-
+/* Paginação (Bootstrap-like) */
+#pager .pagination { margin: 0; }
 #pager .page-item .page-link {
-    color: #050505;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+  color: #050505;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  min-width: 40px;              /* alvos de toque maiores */
+  text-align: center;
 }
-
 #pager .page-item.active .page-link {
-    background-color: #fd0d0d;
-    border-color: #0d6efd;
-    color: #fff;
+  background-color: #fd0d0d;
+  border-color: #0d6efd;
+  color: #fff;
 }
-
 #pager .page-item.disabled .page-link {
-    color: #999;
-    cursor: not-allowed;
+  color: #999;
+  cursor: not-allowed;
 }
 
-
-
+/* Modal de detalhes */
 .modal-body .detalhe-personagem {
   display: grid;
-  grid-template-columns: minmax(280px, 360px) 1fr; /* coluna da imagem */
-  gap: 20px;
+  grid-template-columns: 1fr;    /* mobile: uma coluna */
+  gap: 16px;
   align-items: start;
 }
 
-
-@media (max-width: 576px) {
 .detalhe-personagem img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    border-radius: 8px;
-    background: #f7f7f7;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  background: #f7f7f7;
 }
 
-
-.detalhe-personagem dl {
-    margin: 0;
-}
-
+.detalhe-personagem dl { margin: 0; }
 .detalhe-personagem dt {
-    font-weight: 600;
-    color: #333;
+  font-weight: 600;
+  color: #333;
 }
+.detalhe-personagem dd { margin: 0 0 .55rem 0; }
 
-.detalhe-personagem dd {
-    margin: 0 0 .55rem 0;
-}
+/* ===== Breakpoints ===== */
 
+/* >= 576px (sm) */
+@media (min-width: 576px) {
+  h1, h5 { font-size: 2.25rem; }
 
-.modal-body .detalhe-personagem {
-    display: grid;
-    grid-template-columns: minmax(280px, 360px) 1fr;
-    /* coluna da imagem fica maior */
+  .nav-container {
+    grid-template-columns: 80px 1fr auto;
+    grid-template-areas: "logo titulo form";
+    min-height: 72px;
+  }
+
+  .navegar img {
+    width: 80px;
+    height: 80px;
+  }
+
+  form {
+    position: static;          /* layout no fluxo */
+    width: auto;
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+  }
+
+  .modal-body .detalhe-personagem {
+    grid-template-columns: minmax(280px, 360px) 1fr; /* imagem + conteúdo */
     gap: 20px;
-    align-items: start;
+  }
 }
 
-
-@media (max-width: 576px) {
-    .nav-container {
-        grid-template-columns: 64px 1fr;
-        grid-template-areas:
-            "logo titulo"
-            "form form";
-    }
-
-    .navegar img {
-        grid-area: logo;
-    }
-
-    .titulo {
-        grid-area: titulo;
-    }
-
-    .brr-buscar {
-        grid-area: form;
-    }
+/* >= 768px (md) */
+@media (min-width: 768px) {
+  h1, h5 { font-size: 2.5rem; }
 }
 
+/* >= 992px (lg) */
+@media (min-width: 992px) {
+  .card-personagem img { height: 260px; }
+}
+
+/* Preferências do usuário: reduzir movimento */
+@media (prefers-reduced-motion: reduce) {
+  .card-personagem img {
+    transition: none;
+  }
+  .card-personagem:hover {
+    transform: none;
+    box-shadow: none;
+  }
 }
