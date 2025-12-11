@@ -96,7 +96,7 @@ function safeImgSrc(url) {
   return fixed || "./imagens/placeholder.png"; // mantenha esse placeholder no seu projeto
 }
 
-
+document.getElementById('year').textContent = new Date().getFullYear();
 
 // =========================
 // Renderização dos cards (clique na imagem abre modal)
@@ -460,3 +460,6 @@ formBusca?.addEventListener("submit", (e) => {
 // Inicialização
 // =========================
 listarPersonagens(currentPage, currentLimit);
+
+
+
